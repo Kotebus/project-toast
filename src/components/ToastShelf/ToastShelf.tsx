@@ -1,18 +1,19 @@
 import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
-import type {IToastData} from "../ToastPlayground";
+import {use} from "react";
+import {type IToastData, ToastContext} from "../ToastProvider/ToastContext.tsx";
 
-interface IToastShelfProps {
-    toastsData: IToastData[];
-    removeToast: (toastId: string) => void;
-}
+function ToastShelf() {
+    const context = use(ToastContext);
+    if (!context) return;
 
-function ToastShelf({toastsData, removeToast}: IToastShelfProps) {
-    if (!toastsData || toastsData.length === 0) return;
+    const {data, removeToast} = context;
+
+    if (!data || data.length === 0) return;
 
     return (
         <ol className={styles.wrapper}>
-            {toastsData.map((item: IToastData) => (
+            {data.map((item: IToastData) => (
                 <li key={item.id} className={styles.toastWrapper}>
                     <Toast
                         variant={item.variant}

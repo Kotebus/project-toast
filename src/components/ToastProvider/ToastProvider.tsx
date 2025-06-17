@@ -1,12 +1,5 @@
 import {type PropsWithChildren, useCallback, useMemo, useState} from "react";
-import type {IToastData} from "../ToastPlayground";
-import type {VariantOptionType} from "../ToastPlayground/VariantOptionItem.tsx";
-import {ToastContext} from "./ToastContext.tsx";
-
-interface INewToastData {
-    text: string;
-    variant: VariantOptionType;
-}
+import {type INewToastData, type IToastData, ToastContext} from "./ToastContext.tsx";
 
 function ToastProvider({children} : PropsWithChildren) {
     const [data, setData] = useState<IToastData[]>([]);
@@ -28,9 +21,11 @@ function ToastProvider({children} : PropsWithChildren) {
         },
         [data]);
 
-    const value = useMemo(() => {
-        return {data, addToast, removeToast};
-    }, [addToast, data, removeToast]);
+    const value = useMemo(
+        () => {
+            return {data, addToast, removeToast};
+        },
+        [addToast, data, removeToast]);
 
     return (
         <ToastContext value={value}>
