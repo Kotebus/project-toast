@@ -3,9 +3,9 @@ import Button from '../Button';
 import styles from './ToastPlayground.module.css';
 import VariantOptionItem, {type VariantOptionType} from "./VariantOptionItem.tsx";
 import {VARIANT_OPTIONS} from "./constants.ts";
-import {useState, type FormEvent, useRef} from "react";
+import {useState, type FormEvent, useRef, use} from "react";
 import ToastShelf from "../ToastShelf";
-import {useToastData} from "../use-toast-data.ts";
+import {ToastContext} from "../ToastProvider/ToastContext.tsx";
 
 export interface IToastData {
   text: string;
@@ -18,7 +18,9 @@ function ToastPlayground() {
   const [text, setText] = useState('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const {data, addToast, removeToast} = useToastData();
+  const context = use(ToastContext);
+  if (!context) return;
+  const {data, addToast, removeToast} = context;
 
   const submitToast = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
