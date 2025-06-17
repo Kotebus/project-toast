@@ -4,15 +4,18 @@ import styles from './ToastPlayground.module.css';
 import VariantOptionItem, {type VariantOptionType} from "./VariantOptionItem.tsx";
 import {VARIANT_OPTIONS} from "./constants.ts";
 import {useState, type FormEvent} from "react";
+import Toast from "../Toast";
 
 function ToastPlayground() {
   const [selectedVariant, setSelectedVariant] = useState<VariantOptionType>(VARIANT_OPTIONS[0]);
   const [text, setText] = useState('');
+  const [isToastOpen, setIsToastOpen] = useState(false);
 
   const submitToast = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    window.alert(`${selectedVariant}: ${text}`);
-    setText('');
+    //window.alert(`${selectedVariant}: ${text}`);
+    setIsToastOpen(true);
+    //setText('');
   };
 
   return (
@@ -22,6 +25,14 @@ function ToastPlayground() {
             <img alt="Cute toast mascot" src="/assets/toast.png" />
             <h1>Toast Playground</h1>
           </header>
+
+          { isToastOpen && (
+          <Toast
+              variant={selectedVariant}
+              handleDismiss={() => setIsToastOpen(false)}
+          >
+            {text}
+          </Toast>)}
 
           <div className={styles.controlsWrapper}>
             <div className={styles.row}>
