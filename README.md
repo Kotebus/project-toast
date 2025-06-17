@@ -57,7 +57,7 @@ In order to test our `Toast` component, we'll start by building a little playgro
 
 ![Image showing a textarea and set of radio buttons, along with a “Pop Toast!” radio button](./docs/playground.png)
 
-In `ToastPlayground.js`, you'll find most of the markup you'll need, but there are two problems:
+In `ToastPlayground.tsx`, you'll find most of the markup you'll need, but there are two problems:
 
 1. All of the inputs are _uncontrolled_, meaning we can't easily access their values in React. We should use React state to drive all form controls.
 2. We're only given a single radio button. We need one for each valid variant.
