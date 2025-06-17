@@ -1,10 +1,15 @@
 import styles from './Button.module.css';
+import type {ComponentProps} from "react";
 
-function Button({ className = '', ...delegated }) {
+interface IButtonProps extends ComponentProps<'button'> {
+  className?: string;
+}
+
+function Button({ className = '', ...delegated } : IButtonProps) {
   return (
     <button
-      className={`${styles.button} ${className}`}
       {...delegated}
+      className={`${styles.button} ${className}`}
     />
   );
 }
