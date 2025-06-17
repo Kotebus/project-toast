@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "author": "Josh Comeau <me@joshwcomeau.com>",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "eslint": "^9.29.0",
-    "new-component": "6.0.0",
     "parcel": "2.15.2",
     "parcel-reporter-static-files-copy": "1.5.3",
     "prettier": "3.5.3",
@@ -20,17 +25,13 @@
     "@types/node": "^24.0.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.5.2",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.34.1"
-  },
-  "scripts": {
-    "predev": "rimraf .parcel-cache dist",
-    "dev": "parcel public/index.html",
-    "build": "parcel build public/index.html",
-    "new-component": "new-component"
+    "typescript-eslint": "^8.34.1",
+    "vite": "^6.3.5"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "staticFiles": {
