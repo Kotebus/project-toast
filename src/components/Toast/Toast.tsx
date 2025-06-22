@@ -24,11 +24,11 @@ interface IToastProps extends PropsWithChildren {
 }
 
 function Toast({children, variant, handleDismiss}: IToastProps) {
-    const Tag = ICONS_BY_VARIANT[variant];
+    const Icon = ICONS_BY_VARIANT[variant];
     return (
         <div className={`${styles.toast} ${styles[variant]}`}>
             <div className={styles.iconContainer}>
-                <Tag size={24}/>
+                <Icon size={24}/>
             </div>
             <p className={styles.content}>
                 <VisuallyHidden> {variant} -</VisuallyHidden>
