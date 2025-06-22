@@ -1,19 +1,12 @@
-import {type PropsWithChildren, useCallback, useEffect, useMemo, useState} from "react";
+import {type PropsWithChildren, useCallback, useMemo, useState} from "react";
 import {type INewToastData, type IToastData, ToastContext} from "./ToastContext.tsx";
+import useEscapeKey from "../../hooks/use-escape-key.ts";
 
 function ToastProvider({children} : PropsWithChildren) {
     const [data, setData] = useState<IToastData[]>([]);
 
-    useEffect(() => {
-        const handleOnKeyDown = (e:KeyboardEvent) => {
-            if (e.key === 'Escape') {
-                setData([]);
-            }
-        };
-
-        document.addEventListener("keydown", handleOnKeyDown);
-        return () => document.removeEventListener("keypress", handleOnKeyDown);
-    }, []);
+    const clearData = useCallback(() => setData([]), []);
+    useEscapeKey({onEscapeKeyHandler: clearData});
 
     const addToast = useCallback(
         ({text, variant} : INewToastData) => {

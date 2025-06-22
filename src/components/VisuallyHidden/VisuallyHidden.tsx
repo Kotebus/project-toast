@@ -1,4 +1,4 @@
-import {ComponentProps, PropsWithChildren, useEffect, useState} from 'react';
+import {type ComponentProps, type PropsWithChildren, useEffect, useState} from 'react';
 
 import styles from './VisuallyHidden.module.css';
 
