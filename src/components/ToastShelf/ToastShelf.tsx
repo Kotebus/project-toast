@@ -12,7 +12,11 @@ function ToastShelf() {
     if (!data || data.length === 0) return;
 
     return (
-        <ol className={styles.wrapper}>
+        <ol className={styles.wrapper}
+            role="region"
+            aria-live="polite"
+            aria-label="Notification"
+        >
             {data.map((item: IToastData) => (
                 <li key={item.id} className={styles.toastWrapper}>
                     <Toast

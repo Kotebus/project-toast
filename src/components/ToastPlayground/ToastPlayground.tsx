@@ -3,7 +3,7 @@ import Button from '../Button';
 import styles from './ToastPlayground.module.css';
 import VariantOptionItem, {type VariantOptionType} from "./VariantOptionItem.tsx";
 import {VARIANT_OPTIONS} from "./constants.ts";
-import {useState, type FormEvent, useRef, use} from "react";
+import {useState, type FormEvent, useRef, use, useEffect} from "react";
 import ToastShelf from "../ToastShelf";
 import {ToastContext} from "../ToastProvider/ToastContext.tsx";
 
@@ -11,6 +11,9 @@ function ToastPlayground() {
   const [selectedVariant, setSelectedVariant] = useState<VariantOptionType>(VARIANT_OPTIONS[0]);
   const [text, setText] = useState('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  useEffect(() => {
+    textAreaRef.current?.focus();
+  }, []);
 
   const context = use(ToastContext);
   if (!context) return;
@@ -43,10 +46,7 @@ function ToastPlayground() {
               </label>
               <div className={styles.inputWrapper}>
                 <textarea
-                    ref={(node) => {
-                      textAreaRef.current = node;
-                      node?.focus();
-                    }}
+                    ref={textAreaRef}
                     id="message"
                     className={styles.messageInput}
                     value={text}
