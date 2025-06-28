@@ -3,7 +3,7 @@ import Button from '../Button';
 import styles from './ToastPlayground.module.css';
 import VariantOptionItem, {type VariantOptionType} from "./VariantOptionItem.tsx";
 import {VARIANT_OPTIONS} from "./constants.ts";
-import {useState, type FormEvent, useRef, use, useEffect} from "react";
+import {type FormEvent, use, useEffect, useRef, useState} from "react";
 import ToastShelf from "../ToastShelf";
 import {ToastContext} from "../ToastProvider/ToastContext.tsx";
 

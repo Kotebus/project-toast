@@ -1,8 +1,8 @@
 import {useEffect} from "react";
 
-function useEscapeKey({ onEscapeKeyHandler }: { onEscapeKeyHandler: () => void }) {
+function useEscapeKey({onEscapeKeyHandler}: { onEscapeKeyHandler: () => void }) {
     useEffect(() => {
-        const handleOnKeyDown = (e:KeyboardEvent) => {
+        const handleOnKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 onEscapeKeyHandler();
             }

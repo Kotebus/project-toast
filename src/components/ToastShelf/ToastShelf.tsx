@@ -1,3 +1,5 @@
+import { createPortal } from 'react-dom';
+
 import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
 import {use} from "react";
@@ -11,7 +13,7 @@ function ToastShelf() {
 
     if (!data || data.length === 0) return;
 
-    return (
+    return createPortal((
         <ol className={styles.wrapper}
             role="region"
             aria-live="polite"
@@ -28,7 +30,7 @@ function ToastShelf() {
                 </li>
             ))}
         </ol>
-    );
+    ), document.querySelector('#toast-shelf-root')!);
 }
 
 export default ToastShelf;
